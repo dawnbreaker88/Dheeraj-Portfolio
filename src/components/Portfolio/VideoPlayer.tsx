@@ -52,28 +52,44 @@ export default function VideoPlayer({ src, thumbnail, title }: VideoPlayerProps)
     return () => video.removeEventListener('timeupdate', onTimeUpdate)
   }, [])
 
-  // Lazy load & autoplay video only when visible in viewport, pause when off-screen to save bandwidth
+  // Intelligent progressive preloading and play observations
   useEffect(() => {
     const video = videoRef.current
     const wrapper = wrapperRef.current
     if (!video || !wrapper) return
 
-    const observer = new IntersectionObserver(([entry]) => {
+    // Generous Preloader Observer: starts buffering when nearby
+    const preloadObserver = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        video.preload = 'metadata'
+        video.preload = 'auto' // Instruct browser to load video data ahead
+        preloadObserver.disconnect() // Run once
+      }
+    }, {
+      rootMargin: '400px 800px 400px 800px' // Generous threshold to load ahead of scroll
+    })
+
+    // Strict Play/Pause Viewport Observer: plays when in view, pauses when out
+    const playObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
         video.play().then(() => {
           setIsPlaying(true)
-        }).catch(() => {
-          // Play prevented
-        })
+        }).catch(() => {})
       } else {
         video.pause()
         setIsPlaying(false)
       }
-    }, { threshold: 0.15 })
+    }, {
+      rootMargin: '0px',
+      threshold: 0.1
+    })
 
-    observer.observe(wrapper)
-    return () => observer.disconnect()
+    preloadObserver.observe(wrapper)
+    playObserver.observe(wrapper)
+
+    return () => {
+      preloadObserver.disconnect()
+      playObserver.disconnect()
+    }
   }, [])
 
   const togglePlay = () => {

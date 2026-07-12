@@ -234,11 +234,11 @@ export default function Contact() {
           onMouseLeave={() => setHoveringHeading(false)}
           onMouseMove={handleMouseMove}
         >
-          Let's Build
+          Let's Create
           <br />
-          Something People
+          Content That
           <br />
-          Remember.
+          Stands Out.
         </h2>
 
         {/* CTA - Interactive Color Changing Button */}
@@ -317,7 +317,19 @@ export default function Contact() {
           <p className="footer-tagline text-meta">
             Crafted with Motion. Designed with Intention.
           </p>
-          <p className="footer-copy text-meta">© {new Date().getFullYear()} Dheeraj</p>
+
+          <div className="footer-copy text-meta">
+            <span>© {new Date().getFullYear()} Dheeraj<br></br></span>
+
+            <a
+              href="https://dawnbreaker88.github.io/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-credit"
+            >
+              Built by Prabhath ↗
+            </a>
+          </div>
         </div>
       </footer>
     </section>

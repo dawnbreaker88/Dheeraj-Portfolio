@@ -102,6 +102,71 @@ function hexToRgba(color: string, alpha: number): string {
   return color;
 }
 
+interface CurvedVideoPlayerProps {
+  src: string;
+  isCenter: boolean;
+  isMuted: boolean;
+  videoAutoPlay: boolean;
+  videoLoop: boolean;
+  title?: string;
+  index: number;
+  position: number;
+}
+
+function CurvedVideoPlayer({
+  src,
+  isCenter,
+  isMuted,
+  videoAutoPlay,
+  videoLoop,
+  title,
+  index,
+  position
+}: CurvedVideoPlayerProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isCenter) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isCenter]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = isMuted;
+    }
+  }, [isMuted]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      loop={videoLoop}
+      muted={isMuted}
+      playsInline
+      preload={Math.abs(position) <= 1 ? "auto" : "none"}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        display: "block",
+        position: "absolute",
+        inset: 0,
+        zIndex: isCenter ? 2 : 1,
+        opacity: isCenter ? 1 : 0,
+        transition: "opacity 0.4s ease-in-out",
+      }}
+      aria-label={title ? `Video for ${title}` : `Video ${index + 1}`}
+    />
+  );
+}
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function CurvedCarousel({
@@ -529,74 +594,83 @@ export default function CurvedCarousel({
                 {/* Video */}
                 {item.video ? (
                   <div style={{ width: "100%", height: showContentOnHover ? "100%" : `${imageHeightPercent}%`, position: showContentOnHover ? "absolute" : "relative", top: 0, left: 0, overflow: "hidden" }}>
-                    {isCenter ? (
-                      <>
-                        <video
-                          src={item.video}
-                          autoPlay={videoAutoPlay}
-                          loop={videoLoop}
-                          muted={isMuted}
-                          playsInline
-                          preload="metadata"
-                          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                          aria-label={item.title ? `Video for ${item.title}` : `Video ${index + 1}`}
-                        />
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setIsMuted(!isMuted);
-                          }}
-                          style={{
-                            position: "absolute",
-                            top: "16px",
-                            right: "16px",
-                            width: "36px",
-                            height: "36px",
-                            borderRadius: "50%",
-                            background: "rgba(9, 9, 11, 0.65)",
-                            backdropFilter: "blur(8px)",
-                            border: "1px solid rgba(255, 255, 255, 0.15)",
-                            color: "#ffffff",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            cursor: "pointer",
-                            zIndex: 20,
-                            transition: "background 0.2s, transform 0.2s",
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.background = "rgba(9, 9, 11, 0.85)";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.background = "rgba(9, 9, 11, 0.65)";
-                          }}
-                          title={isMuted ? "Unmute" : "Mute"}
-                          aria-label={isMuted ? "Unmute video" : "Mute video"}
-                        >
-                          {isMuted ? (
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                              <line x1="23" y1="9" x2="17" y2="15" />
-                              <line x1="17" y1="9" x2="23" y2="15" />
-                            </svg>
-                          ) : (
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                              <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                            </svg>
-                          )}
-                        </button>
-                      </>
-                    ) : item.image ? (
+                    <CurvedVideoPlayer
+                      src={item.video}
+                      isCenter={isCenter}
+                      isMuted={isMuted}
+                      videoAutoPlay={videoAutoPlay}
+                      videoLoop={videoLoop}
+                      title={item.title}
+                      index={index}
+                      position={position}
+                    />
+                    
+                    {isCenter && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsMuted(!isMuted);
+                        }}
+                        style={{
+                          position: "absolute",
+                          top: "16px",
+                          right: "16px",
+                          width: "36px",
+                          height: "36px",
+                          borderRadius: "50%",
+                          background: "rgba(9, 9, 11, 0.65)",
+                          backdropFilter: "blur(8px)",
+                          border: "1px solid rgba(255, 255, 255, 0.15)",
+                          color: "#ffffff",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          cursor: "pointer",
+                          zIndex: 20,
+                          transition: "background 0.2s, transform 0.2s",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "rgba(9, 9, 11, 0.85)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "rgba(9, 9, 11, 0.65)";
+                        }}
+                        title={isMuted ? "Unmute" : "Mute"}
+                        aria-label={isMuted ? "Unmute video" : "Mute video"}
+                      >
+                        {isMuted ? (
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                            <line x1="23" y1="9" x2="17" y2="15" />
+                            <line x1="17" y1="9" x2="23" y2="15" />
+                          </svg>
+                        ) : (
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                          </svg>
+                        )}
+                      </button>
+                    )}
+
+                    {item.image && (
                       <img
                         src={item.image.src}
                         alt={item.image.alt || item.title || "Preview"}
-                        loading="lazy"
-                        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          display: "block",
+                          position: "absolute",
+                          inset: 0,
+                          zIndex: isCenter ? 1 : 2,
+                          opacity: isCenter ? 0 : 1,
+                          transition: "opacity 0.4s ease-in-out",
+                          pointerEvents: "none",
+                        }}
                       />
-                    ) : (
-                      <div style={{ width: "100%", height: "100%", backgroundColor: "#111" }} />
                     )}
                   </div>
                 ) : item.image ? (

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState, useRef, ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useState, useRef, ReactNode, useCallback } from 'react'
 import './utils/gsapSetup'
 import { initLenis } from './utils/lenis'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -24,11 +24,16 @@ const Contact    = lazy(() => import('./components/Contact/Contact'))
 interface LazySectionProps {
   children: ReactNode
   height?: string | number
+  index: number
+  maxPreloadedIndex: number
+  onVisible: (index: number) => void
 }
 
-function LazySection({ children, height = '400px' }: LazySectionProps) {
+function LazySection({ children, height = '400px', index, maxPreloadedIndex, onVisible }: LazySectionProps) {
   const [hasRendered, setHasRendered] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  const shouldRender = hasRendered || maxPreloadedIndex >= index
 
   useEffect(() => {
     const el = containerRef.current
@@ -37,7 +42,7 @@ function LazySection({ children, height = '400px' }: LazySectionProps) {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setHasRendered(true)
-        observer.disconnect()
+        onVisible(index)
       }
     }, {
       rootMargin: '500px 0px 500px 0px' // Load 500px before approaching viewport
@@ -45,26 +50,32 @@ function LazySection({ children, height = '400px' }: LazySectionProps) {
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [index, onVisible])
 
   // Force ScrollTrigger to refresh once DOM elements are rendered to update positioning math
   useEffect(() => {
-    if (hasRendered) {
+    if (shouldRender) {
       const timer = setTimeout(() => {
         ScrollTrigger.refresh()
       }, 150)
       return () => clearTimeout(timer)
     }
-  }, [hasRendered])
+  }, [shouldRender])
 
   return (
-    <div ref={containerRef} style={{ minHeight: hasRendered ? 'auto' : height }}>
-      {hasRendered ? children : null}
+    <div ref={containerRef} style={{ minHeight: shouldRender ? 'auto' : height }}>
+      {shouldRender ? children : null}
     </div>
   )
 }
 
 export default function App() {
+  const [maxPreloadedIndex, setMaxPreloadedIndex] = useState(0)
+
+  const onVisible = useCallback((index: number) => {
+    setMaxPreloadedIndex(prev => Math.max(prev, index + 1))
+  }, [])
+
   useEffect(() => {
     // Force browser to start scroll at top on page reload
     if ('scrollRestoration' in window.history) {
@@ -140,39 +151,39 @@ export default function App() {
         <About />
 
         <Suspense fallback={null}>
-          <LazySection height="100vh">
+          <LazySection height="100vh" index={0} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Portfolio />
           </LazySection>
 
-          <LazySection height="100vh">
+          <LazySection height="100vh" index={1} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Ugc />
           </LazySection>
 
-          <LazySection height="30vh">
+          <LazySection height="30vh" index={2} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Philosophy />
           </LazySection>
 
-          <LazySection height="100vh">
+          <LazySection height="100vh" index={3} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <PhotoEditing />
           </LazySection>
 
-          <LazySection height="60vh">
+          <LazySection height="60vh" index={4} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Services />
           </LazySection>
 
-          <LazySection height="40vh">
+          <LazySection height="40vh" index={5} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Tools />
           </LazySection>
 
-          <LazySection height="80vh">
+          <LazySection height="80vh" index={6} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Skills />
           </LazySection>
 
-          <LazySection height="80vh">
+          <LazySection height="80vh" index={7} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Experience />
           </LazySection>
 
-          <LazySection height="100vh">
+          <LazySection height="100vh" index={8} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Contact />
           </LazySection>
         </Suspense>
