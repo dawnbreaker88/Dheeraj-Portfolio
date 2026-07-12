@@ -255,13 +255,7 @@ export default function Contact() {
 
         {/* Dynamic Hover-Expanding Social Widget */}
         <div style={{ marginTop: '60px', position: 'relative', zIndex: 10 }}>
-          <SocialWidget
-            whatsapp={WHATSAPP_LINK}
-            instagram="#"
-            linkedin="#"
-            behance="#"
-            email="mailto:dheeraj@example.com"
-          />
+          <SocialWidget />
         </div>
       </div>
 
