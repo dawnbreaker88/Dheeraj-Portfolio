@@ -1,0 +1,48 @@
+.philosophy-section {
+  position: relative;
+  padding: clamp(120px, 18vh, 220px) clamp(24px, 6vw, 120px);
+  background: var(--color-bg);
+  overflow: hidden;
+  /* Slow background color shift */
+  animation: hue-drift 20s linear infinite alternate;
+}
+
+@keyframes hue-drift {
+  from { background-color: #09090b; }
+  to   { background-color: #121214; }
+}
+
+.ripple-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.philosophy-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.philosophy-eyebrow {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.philosophy-quote {
+  font-style: normal;
+  color: var(--color-text-primary);
+  max-width: 900px;
+  line-height: 1.25;
+}
+
+.phil-word {
+  display: inline-block;
+}
+
+.philosophy-accent {
+  font-style: normal;
+  color: var(--color-accent-hover);
+}

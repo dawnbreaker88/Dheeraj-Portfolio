@@ -1,0 +1,38 @@
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  pointer-events: none;
+  z-index: 100000;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  .cursor-ring, .cursor-dot { display: none; }
+  body { cursor: auto !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-ring, .cursor-dot { display: none; }
+}

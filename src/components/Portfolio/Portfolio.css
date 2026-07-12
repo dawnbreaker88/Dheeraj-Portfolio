@@ -1,0 +1,254 @@
+/* ─── Portfolio Section ─────────────────────────────────── */
+
+.portfolio-section {
+  /* Height is set by ScrollTrigger end via pinSpacing;
+     we just need a starting height equal to the viewport */
+  position: relative;
+  background: var(--color-bg);
+  /* overflow hidden is NOT set here — ScrollTrigger adds a spacer */
+}
+
+/* The viewport-sized window that pins */
+.portfolio-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Horizontal track — wide as all slides combined */
+.portfolio-track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+/* Each slide = 100vw */
+.portfolio-slide {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 280px 1fr 260px;
+  align-items: center;
+  gap: 40px;
+  padding: 0 clamp(32px, 5vw, 100px);
+}
+
+/* ── Left: Metadata ── */
+.slide-eyebrow {
+  display: block;
+  margin-bottom: 28px;
+}
+
+.slide-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+  margin-bottom: 28px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.meta-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.slide-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ── Center: Video ── */
+.slide-video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Right: Index + Title ── */
+.slide-title-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.slide-index {
+  letter-spacing: 0.12em;
+}
+
+.slide-title {
+  font-size: clamp(28px, 3.5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Video Player ─────────────────────────────────────── */
+
+.video-player-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-video);
+  overflow: hidden;
+  background: var(--color-surface);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 1px var(--color-border);
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(8, 8, 8, 0.6);
+}
+
+.placeholder-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── Custom Controls ── */
+.video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: none; /* GSAP handles this */
+}
+
+.video-progress {
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.video-progress-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.video-progress-fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.video-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ctrl-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.ctrl-btn:hover {
+  color: #fff;
+}
+
+.ctrl-spacer {
+  flex: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .portfolio-slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    padding: 80px 24px 40px;
+    align-items: center;
+  }
+  .slide-meta,
+  .slide-title-col { display: none; }
+}
+
+@media (max-width: 900px) {
+  .portfolio-container {
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  .portfolio-track {
+    flex-direction: column !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+  .portfolio-slide {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: clamp(60px, 8vh, 100px) clamp(16px, 4vw, 40px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 20px !important;
+  }
+  .slide-title-col {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100% !important;
+  }
+  .slide-meta {
+    display: none !important;
+  }
+}

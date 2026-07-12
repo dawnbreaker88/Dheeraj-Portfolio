@@ -1,0 +1,163 @@
+/* ─── UGC Section ─────────────────────────────────── */
+
+.ugc-section {
+  position: relative;
+  background: var(--color-bg);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+}
+
+.ugc-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(32px, 5vw, 100px);
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 60px;
+  align-items: center;
+  z-index: 3;
+}
+
+/* Left Column */
+.ugc-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.ugc-eyebrow {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--color-accent);
+}
+
+.ugc-section-title {
+  margin-bottom: 24px;
+}
+
+.ugc-section-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.ugc-project-details {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.ugc-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.ugc-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ugc-detail-label {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+}
+
+.ugc-detail-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.ugc-project-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+
+/* Right Column (Carousel) */
+.ugc-carousel-col {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.ugc-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make sure the carousel buttons aren't hidden by clipping */
+.ugc-carousel-wrapper button {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.3s, transform 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ugc-carousel-wrapper button:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-50%) scale(1.05) !important;
+}
+
+.ugc-carousel-wrapper button:active {
+  transform: translateY(-50%) scale(0.95) !important;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .ugc-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 24px;
+  }
+
+  .ugc-meta-col {
+    gap: 32px;
+  }
+
+  .ugc-carousel-wrapper {
+    height: 550px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ugc-section {
+    padding: 60px 0;
+  }
+
+  .ugc-project-details {
+    padding: 20px;
+  }
+
+  .ugc-details-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .ugc-carousel-wrapper {
+    height: 500px;
+  }
+}

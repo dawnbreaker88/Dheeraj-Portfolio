@@ -1,0 +1,398 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────
+   FONTS
+───────────────────────────────────────── */
+@font-face {
+  font-family: 'Quilon';
+  src: url('/fonts/quilon/Quilon-Regular.woff2') format('woff2'),
+       url('/fonts/quilon/Quilon-Regular.woff') format('woff'),
+       url('/fonts/quilon/Quilon-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quilon';
+  src: url('/fonts/quilon/Quilon-Medium.woff2') format('woff2'),
+       url('/fonts/quilon/Quilon-Medium.woff') format('woff'),
+       url('/fonts/quilon/Quilon-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quilon';
+  src: url('/fonts/quilon/Quilon-Semibold.woff2') format('woff2'),
+       url('/fonts/quilon/Quilon-Semibold.woff') format('woff'),
+       url('/fonts/quilon/Quilon-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quilon';
+  src: url('/fonts/quilon/Quilon-Bold.woff2') format('woff2'),
+       url('/fonts/quilon/Quilon-Bold.woff') format('woff'),
+       url('/fonts/quilon/Quilon-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi/Satoshi-Light.woff2') format('woff2'),
+       url('/fonts/satoshi/Satoshi-Light.woff') format('woff'),
+       url('/fonts/satoshi/Satoshi-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi/Satoshi-Regular.woff2') format('woff2'),
+       url('/fonts/satoshi/Satoshi-Regular.woff') format('woff'),
+       url('/fonts/satoshi/Satoshi-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi/Satoshi-Medium.woff2') format('woff2'),
+       url('/fonts/satoshi/Satoshi-Medium.woff') format('woff'),
+       url('/fonts/satoshi/Satoshi-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi/Satoshi-Bold.woff2') format('woff2'),
+       url('/fonts/satoshi/Satoshi-Bold.woff') format('woff'),
+       url('/fonts/satoshi/Satoshi-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi/Satoshi-Black.woff2') format('woff2'),
+       url('/fonts/satoshi/Satoshi-Black.woff') format('woff'),
+       url('/fonts/satoshi/Satoshi-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk/CabinetGrotesk-Regular.woff2') format('woff2'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Regular.woff') format('woff'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk/CabinetGrotesk-Medium.woff2') format('woff2'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Medium.woff') format('woff'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk/CabinetGrotesk-Bold.woff2') format('woff2'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Bold.woff') format('woff'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk/CabinetGrotesk-Extrabold.woff2') format('woff2'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Extrabold.woff') format('woff'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Extrabold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk/CabinetGrotesk-Black.woff2') format('woff2'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Black.woff') format('woff'),
+       url('/fonts/cabinet-grotesk/CabinetGrotesk-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────── */
+@theme {
+  --color-bg: #09090b;
+  --color-surface: #141416;
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #8e8e93;
+  --color-accent: #6a5af9;
+  --color-accent-hover: #8b7cff;
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  --font-display: "Cabinet Grotesk", sans-serif;
+  --font-body: "Satoshi", sans-serif;
+
+  --radius-card: 6px;
+  --radius-video: 8px;
+}
+
+/* ─────────────────────────────────────────
+   BASE RESET
+───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@media (min-width: 769px) {
+  body {
+    cursor: none;
+  }
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* Restore pointer for text/inputs in case */
+input, textarea, select {
+  cursor: text;
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY SCALE
+───────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+/* Logo and Hero heading overrides to keep Quilon */
+.nav-logo, .hero-heading {
+  font-family: "Quilon", sans-serif !important;
+}
+
+.text-hero {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 12vw, 160px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.text-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 96px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+.text-quote {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 64px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.text-body-lg {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.text-meta {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* ─────────────────────────────────────────
+   FILM GRAIN (applied via SVG filter class)
+───────────────────────────────────────── */
+.film-grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.035;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: grain-shift 0.5s steps(2) infinite;
+}
+
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2%, -1%); }
+  50%  { transform: translate(1%, 2%); }
+  75%  { transform: translate(-1%, 1%); }
+  100% { transform: translate(2%, -2%); }
+}
+
+/* ─────────────────────────────────────────
+   SPOTLIGHT (cursor following glow)
+───────────────────────────────────────── */
+.spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    circle at center,
+    rgba(106, 90, 249, 0.05) 0%,
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+}
+
+/* ─────────────────────────────────────────
+   GLASS CARD (Editorial Matte Card)
+───────────────────────────────────────── */
+.glass-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+/* ─────────────────────────────────────────
+   ACCENT BUTTON
+───────────────────────────────────────── */
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-card);
+  border: none;
+  cursor: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-accent:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 34px;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  cursor: none;
+  text-decoration: none;
+  transition: border-color 0.3s ease;
+}
+
+
+.btn-outline:hover {
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* ─────────────────────────────────────────
+   VIGNETTE
+───────────────────────────────────────── */
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(8,8,8,0.8) 100%);
+  z-index: 2;
+}
+
+/* ─────────────────────────────────────────
+   SECTION BASE
+───────────────────────────────────────── */
+.scene {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────
+   SCROLLBAR HIDE
+───────────────────────────────────────── */
+::-webkit-scrollbar { display: none; }
+html { scrollbar-width: none; }
+
+/* ─────────────────────────────────────────
+   REDUCED MOTION
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .film-grain-overlay { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* ─────────────────────────────────────────
+   SPLIT TEXT MASK (for reveal animations)
+───────────────────────────────────────── */
+.split-mask {
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* ─────────────────────────────────────────
+   CUSTOM SCROLLBAR (hidden globally above)
+   But canvas/three containers should never overflow
+───────────────────────────────────────── */
+canvas {
+  display: block;
+  outline: none;
+}

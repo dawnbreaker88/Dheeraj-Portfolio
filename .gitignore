@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production Build
+dist/
+dist-ssr/
+*.local
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Font Source Packages (Copied to public/fonts/)
+CabinetGrotesk_Complete/
+Quilon_Complete/
+Satoshi_Complete/
+
+# Temp Residual Files
+localhost_*.html
+site perf.pdf
+DESIGNOVER.md
+cinematic-portfolio-spec.md
+walkthrough.md
+task.md
+implementation_plan.md
+vite.config.ts.timestamp-*
+*.mjs
+perfo.json
+skills-lock.json
