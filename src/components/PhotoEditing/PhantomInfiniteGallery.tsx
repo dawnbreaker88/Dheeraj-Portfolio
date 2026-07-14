@@ -134,6 +134,14 @@ export default function PhantomInfiniteGallery({
 }: PhantomInfiniteGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 900)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // Consolidate frequently changing states into a single render-state block
   const [layout, setLayout] = useState({
     offsetX: 0,
@@ -403,6 +411,50 @@ export default function PhantomInfiniteGallery({
   const handlePointerLeave = useCallback(() => {
     targetMouseOffsetRef.current = { x: 0, y: 0 }
   }, [])
+
+  // ── MOBILE RENDER OVERLAY ──────────────────────────────────────────────
+  if (isMobile) {
+    return (
+      <div
+        ref={containerRef}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "12px",
+          padding: "16px",
+          backgroundColor,
+          overflow: "hidden",
+          opacity: 0.2, // soft dim overlay
+          pointerEvents: "none" // vital: allows scroll actions to pass directly through the background
+        }}
+      >
+        {items.map((item, idx) => (
+          <div
+            key={idx}
+            style={{
+              width: "100%",
+              height: "140px",
+              borderRadius: "6px",
+              overflow: "hidden",
+              border: `1px solid ${border.color || "rgba(255,255,255,0.08)"}`
+            }}
+          >
+            <img
+              src={item.image.src.replace("/upload/", "/upload/f_auto,q_auto,w_300/")}
+              alt={item.image.alt || item.title || "Gallery Item"}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover"
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    )
+  }
 
   // ── GRID CALCULATIONS ──────────────────────────────────────────────────
   const gridCells = []

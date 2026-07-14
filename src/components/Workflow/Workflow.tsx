@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import './Workflow.css'
@@ -81,6 +81,43 @@ export default function Workflow() {
       rotationTween.kill()
     }
   }, { scope: sectionRef })
+
+  // Auto-cycle process steps on mobile devices to bypass hover reliance
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth > 768) return
+
+    let currentIndex = -1
+    const cycle = () => {
+      currentIndex = (currentIndex + 1) % NODES.length
+      const node = NODES[currentIndex]
+      setActiveNode(node)
+
+      // Highlight active node and dim others
+      NODES.forEach((n) => {
+        const line = lineRefs.current[n.id]
+        if (line) {
+          gsap.to(line, {
+            stroke: n.id === node.id ? 'var(--color-accent)' : 'rgba(255,255,255,0.1)',
+            opacity: n.id === node.id ? 1 : 0.4,
+            duration: 0.4,
+          })
+        }
+        const ng = nodeRefs.current[n.id]
+        if (ng) {
+          gsap.to(ng.querySelector('circle'), {
+            r: n.id === node.id ? 12 : 8,
+            fill: n.id === node.id ? 'var(--color-accent)' : '#1a1a2e',
+            duration: 0.3,
+          })
+        }
+      })
+    }
+
+    cycle() // Run immediately
+    const intervalId = setInterval(cycle, 3200)
+
+    return () => clearInterval(intervalId)
+  }, [])
 
   const handleNodeHover = (node: Node) => {
     setActiveNode(node)

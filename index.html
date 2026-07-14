@@ -3,16 +3,81 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml"
-    href="https://res.cloudinary.com/cfqdlsg4/image/upload/v1783867463/android-chrome-512x512_lcituz.png" />
+
+  <!-- Viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Preconnect to Cloudinary CDN for fast asset delivery -->
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+  <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+
+  <!-- Preload primary bold fonts to prevent FOUT and layout shifts in Hero -->
+  <link rel="preload" href="/fonts/quilon/Quilon-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/cabinet-grotesk/CabinetGrotesk-Bold.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Primary SEO -->
+  <title>Dheeraj | Video Editor, UGC Editor & Graphic Designer</title>
+
   <meta name="description"
-    content="Dheeraj — Video Editor, UGC Editor & Graphic Designer. Cinematic portfolio showcasing visual storytelling, motion design, and brand content." />
-  <title>heyydheeraj</title>
+    content="Professional portfolio of Dheeraj showcasing cinematic video editing, UGC content, motion graphics, branding, and visual storytelling." />
+
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <meta name="author" content="Dheeraj" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://heyydheeraj.vercel.app/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png"
+    href="https://res.cloudinary.com/cfqdlsg4/image/upload/v1783867463/android-chrome-512x512_lcituz.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://heyydheeraj.vercel.app/" />
+  <meta property="og:site_name" content="Heyy Dheeraj" />
+  <meta property="og:title" content="Dheeraj | Video Editor, UGC Editor & Graphic Designer" />
+  <meta property="og:description"
+    content="Explore Dheeraj's creative portfolio featuring cinematic edits, motion graphics, brand videos, and UGC content." />
+  <meta property="og:image"
+    content="https://res.cloudinary.com/cfqdlsg4/image/upload/v1783867463/android-chrome-512x512_lcituz.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dheeraj | Video Editor & Graphic Designer" />
+  <meta name="twitter:description"
+    content="Creative portfolio showcasing video editing, UGC content, branding, and motion graphics." />
+  <meta name="twitter:image"
+    content="https://res.cloudinary.com/cfqdlsg4/image/upload/v1783867463/android-chrome-512x512_lcituz.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dheeraj",
+    "url": "https://heyydheeraj.vercel.app/",
+    "image": "https://res.cloudinary.com/cfqdlsg4/image/upload/v1783867463/android-chrome-512x512_lcituz.png",
+    "jobTitle": "Video Editor",
+    "description": "Professional Video Editor, UGC Editor & Graphic Designer.",
+    "sameAs": [
+      "https://www.linkedin.com/in/YOUR-LINKEDIN",
+      "https://github.com/YOUR-GITHUB",
+      "https://www.instagram.com/YOUR-INSTAGRAM"
+    ]
+  }
+  </script>
+
 </head>
 
 <body>
+  <noscript>
+    You need to enable JavaScript to run this website.
+  </noscript>
+
   <div id="root"></div>
+
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

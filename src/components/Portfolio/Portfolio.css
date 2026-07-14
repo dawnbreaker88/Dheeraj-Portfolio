@@ -249,6 +249,18 @@
     width: 100% !important;
   }
   .slide-meta {
-    display: none !important;
+    display: block !important;
+    width: 100% !important;
+    margin-top: 10px;
+  }
+  .slide-meta-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px 20px !important;
+    margin-bottom: 20px !important;
+  }
+  .slide-desc {
+    font-size: 14px;
+    line-height: 1.6;
   }
 }

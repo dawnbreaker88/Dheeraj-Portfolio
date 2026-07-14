@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react'
 import './About.css'
 
 const PORTRAIT_PLACEHOLDER =
-  "https://res.cloudinary.com/ady5ycld/image/upload/v1783851920/WhatsApp_Image_2026-07-12_at_3.55.07_PM_nee0j9.jpg"
+  "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_800/v1783851920/WhatsApp_Image_2026-07-12_at_3.55.07_PM_nee0j9.jpg"
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null)

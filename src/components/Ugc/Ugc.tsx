@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ugcProjects } from '../../data/ugcProjects'
 import CurvedCarousel from './CurvedCarousel'
 import './Ugc.css'
@@ -11,17 +11,30 @@ export default function Ugc() {
   const sectionRef = useRef<HTMLElement>(null)
   const metaRef = useRef<HTMLDivElement>(null)
 
-  // Pin section to create a slight pause on scroll
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Pin section to create a slight pause on scroll (desktop only)
   useGSAP(() => {
     if (!sectionRef.current) return
 
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top top',
-      end: '+=400',
-      pin: true,
-      pinSpacing: true,
+    const mm = gsap.matchMedia()
+    mm.add('(min-width: 901px)', () => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top top',
+        end: '+=400',
+        pin: true,
+        pinSpacing: true,
+      })
     })
+    return () => mm.revert()
   }, { scope: sectionRef })
 
   // Smooth transition for metadata when active video changes
@@ -93,11 +106,11 @@ export default function Ugc() {
             <CurvedCarousel
               items={carouselItems}
               onActiveChange={(idx) => setActiveIndex(idx)}
-              cardWidth={260}
-              cardHeight={440}
-              visibleCards={5}
-              radiusDepth={380}
-              verticalDip={28}
+              cardWidth={isMobile ? 180 : 260}
+              cardHeight={isMobile ? 320 : 440}
+              visibleCards={isMobile ? 3 : 5}
+              radiusDepth={isMobile ? 160 : 380}
+              verticalDip={isMobile ? 12 : 28}
               animationStiffness={220}
               animationDamping={28}
               removeBackground={true}
@@ -109,8 +122,8 @@ export default function Ugc() {
               buttonColor="rgba(255,255,255,0.08)"
               buttonHoverColor="rgba(255,255,255,0.18)"
               buttonArrowColor="#ffffff"
-              buttonSize={42}
-              buttonSideOffset={12}
+              buttonSize={isMobile ? 32 : 42}
+              buttonSideOffset={isMobile ? 6 : 12}
               videoAutoPlay={true}
               videoLoop={true}
               dynamicShadowDepth={1.2}

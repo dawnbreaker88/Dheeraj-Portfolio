@@ -21,7 +21,7 @@ export const projects: Project[] = [
     duration: '30 Seconds',
     client: 'Anurag University',
     year: '2026',
-    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/v1783843425/SY2-compressed_gejtmd.mp4",
+    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/f_auto,q_auto/v1783843425/SY2-compressed_gejtmd.mp4",
     thumbnail: '',
     description:
       'A high-energy event highlight capturing the excitement, performances, and unforgettable moments from Synergy 2026, Anurag University’s annual cultural festival.',
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     duration: '60 Seconds',
     client: 'Anurag University',
     year: '2025',
-    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/v1783842389/Convocation_c3rqmj.mp4",
+    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/f_auto,q_auto/v1783842389/Convocation_c3rqmj.mp4",
     thumbnail: '',
     description:
       'A fast-paced graduation recap celebrating the achievements, emotions, and memories of the Anurag University Class of 2025.',
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     duration: '2 Minutes',
     client: 'Anurag University',
     year: '2024',
-    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/v1783842803/WS_-_EDIT_20_kkmyoc.mp4",
+    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/f_auto,q_auto/v1783842803/WS_-_EDIT_20_kkmyoc.mp4",
     thumbnail: '',
     description:
       'A dynamic aftermovie bringing together the best moments of Luminor through engaging pacing, clean transitions, and vibrant visuals.',
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     duration: '45 Seconds',
     client: 'Anurag University',
     year: '2024',
-    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/v1783852224/3_xot6ay.mp4",
+    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/f_auto,q_auto/v1783852224/3_xot6ay.mp4",
     thumbnail: '',
     description:
       'An energetic sports highlight capturing the intensity, teamwork, and competitive spirit of Anurag University’s annual Sportabout event.',
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     duration: '8 Minutes',
     client: 'Anurag University',
     year: '2024',
-    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/v1783852281/FESTIVAL_eqvb8m.mp4",
+    videoSrc: "https://res.cloudinary.com/ady5ycld/video/upload/f_auto,q_auto/v1783852281/FESTIVAL_eqvb8m.mp4",
     thumbnail: '',
     description:
       'A vibrant cultural highlight showcasing the traditions, celebrations, and community spirit of Bathukamma at Anurag University.',

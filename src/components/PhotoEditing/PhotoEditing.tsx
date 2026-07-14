@@ -4,30 +4,34 @@ import PhantomInfiniteGallery from './PhantomInfiniteGallery'
 import './PhotoEditing.css'
 
 const GALLERY_ITEMS = [
-  { title: "Wedding", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/v1783849912/DSC09658_v36xj1.jpg", alt: "Neon Portrait" }, year: 2025 },
-  { title: "", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/v1783846367/IMG_2537.JPG_mqrwbx.jpg", alt: "Cyberpunk Streets" }, year: 2025 },
-  { title: "Sunset Drift", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/v1783846367/IMG_2530.JPG_wpp0vd.jpg", alt: "Sunset Horizon" }, year: 2024 },
-  { title: "Warm Film", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/v1783846366/IMG_2522.JPG_q1iiso.jpg", alt: "Warm Retro" }, year: 2024 },
-  { title: "Cold Nordic", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/v1783846366/IMG_2520.JPG_apzvwz.jpg", alt: "Iceland Landscape" }, year: 2025 },
-  { title: "Golden Gate", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/v1783846365/WhatsApp_Image_2026-07-12_at_2.12.44_PM_wggtum.jpg", alt: "Golden Gate Grade" }, year: 2024 },
-  { title: "Product Detail", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/v1783849912/DSC09675_n9odpn.jpg", alt: "Headphone Shoot" }, year: 2024 },
-  { title: "Editorial Light", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/v1783849912/DSC09670_xnm6ll.jpg", alt: "Editorial Lights" }, year: 2024 }
+  { title: "Wedding", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783849912/DSC09658_v36xj1.jpg", alt: "Neon Portrait" }, year: 2025 },
+  { title: "", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846367/IMG_2537.JPG_mqrwbx.jpg", alt: "Cyberpunk Streets" }, year: 2025 },
+  { title: "Sunset Drift", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846367/IMG_2530.JPG_wpp0vd.jpg", alt: "Sunset Horizon" }, year: 2024 },
+  { title: "Warm Film", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846366/IMG_2522.JPG_q1iiso.jpg", alt: "Warm Retro" }, year: 2024 },
+  { title: "Cold Nordic", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846366/IMG_2520.JPG_apzvwz.jpg", alt: "Iceland Landscape" }, year: 2025 },
+  { title: "Golden Gate", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846365/WhatsApp_Image_2026-07-12_at_2.12.44_PM_wggtum.jpg", alt: "Golden Gate Grade" }, year: 2024 },
+  { title: "Product Detail", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783849912/DSC09675_n9odpn.jpg", alt: "Headphone Shoot" }, year: 2024 },
+  { title: "Editorial Light", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783849912/DSC09670_xnm6ll.jpg", alt: "Editorial Lights" }, year: 2024 }
 ]
 
 export default function PhotoEditing() {
   const sectionRef = useRef<HTMLElement>(null)
   const hudRef = useRef<HTMLDivElement>(null)
 
-  // Pin section to create a slight pause on scroll
+  // Pin section to create a slight pause on scroll (desktop only)
   useGSAP(() => {
     if (!sectionRef.current) return
 
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top top',
-      end: '+=400',
-      pin: true,
-      pinSpacing: true,
+    const mm = gsap.matchMedia()
+
+    mm.add('(min-width: 901px)', () => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top top',
+        end: '+=400',
+        pin: true,
+        pinSpacing: true,
+      })
     })
 
     // HUD entry animation
@@ -47,6 +51,8 @@ export default function PhotoEditing() {
         }
       )
     }
+
+    return () => mm.revert()
   }, { scope: sectionRef })
 
   return (

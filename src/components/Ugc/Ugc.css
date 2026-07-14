@@ -128,6 +128,11 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
+  .ugc-section {
+    height: auto !important;
+    padding: clamp(60px, 8vh, 100px) 0;
+  }
+
   .ugc-container {
     grid-template-columns: 1fr;
     gap: 40px;

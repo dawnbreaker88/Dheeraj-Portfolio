@@ -399,9 +399,9 @@ export default function CurvedCarousel({
   const dotHoverWidth = isVerySmall ? 10 : isSmallMobile ? 11 : isMobileView ? 12 : 16;
 
   const horizontalSpread = useMemo(() => {
-    if (containerWidth <= 320) return Math.max(600, cardWidth * 2.2);
-    if (containerWidth <= 480) return Math.max(700, cardWidth * 2.3);
-    if (containerWidth < 768) return Math.max(750, cardWidth * 2.4);
+    if (containerWidth <= 320) return Math.max(220, cardWidth * 1.2);
+    if (containerWidth <= 480) return Math.max(280, cardWidth * 1.4);
+    if (containerWidth < 768) return Math.max(450, cardWidth * 1.8);
     return Math.max(800, cardWidth * 2.5);
   }, [cardWidth, containerWidth]);
 
@@ -417,29 +417,29 @@ export default function CurvedCarousel({
       const isSmall = containerWidth <= 480;
       const isMedium = containerWidth <= 768;
       const respDepth = isNarrow
-        ? radiusDepth * 2.2
+        ? radiusDepth * 1.1
         : isSmall
-        ? radiusDepth * 1.8
+        ? radiusDepth * 1.15
         : isMedium
-        ? radiusDepth * 1.4
+        ? radiusDepth * 1.2
         : radiusDepth;
 
       let baseZ: number, depthMult: number, scale: number, rotateY: number;
       if (isNarrow) {
-        baseZ = -Math.abs(Math.cos(angle) - 1) * respDepth * 0.9;
-        depthMult = Math.abs(position) * respDepth * 0.55;
-        scale = Math.max(0.25, 1 - Math.abs(position) * 0.32);
-        rotateY = angle * 65;
+        baseZ = -Math.abs(Math.cos(angle) - 1) * respDepth * 0.4;
+        depthMult = Math.abs(position) * respDepth * 0.25;
+        scale = Math.max(0.65, 1 - Math.abs(position) * 0.22);
+        rotateY = angle * 25;
       } else if (isSmall) {
-        baseZ = -Math.abs(Math.cos(angle) - 1) * respDepth * 0.85;
-        depthMult = Math.abs(position) * respDepth * 0.5;
-        scale = Math.max(0.3, 1 - Math.abs(position) * 0.28);
-        rotateY = angle * 55;
+        baseZ = -Math.abs(Math.cos(angle) - 1) * respDepth * 0.45;
+        depthMult = Math.abs(position) * respDepth * 0.3;
+        scale = Math.max(0.7, 1 - Math.abs(position) * 0.2);
+        rotateY = angle * 30;
       } else if (isMedium) {
-        baseZ = -Math.abs(Math.cos(angle) - 1) * respDepth * 0.8;
-        depthMult = Math.abs(position) * respDepth * 0.45;
-        scale = Math.max(0.35, 1 - Math.abs(position) * 0.22);
-        rotateY = angle * 48;
+        baseZ = -Math.abs(Math.cos(angle) - 1) * respDepth * 0.5;
+        depthMult = Math.abs(position) * respDepth * 0.35;
+        scale = Math.max(0.75, 1 - Math.abs(position) * 0.18);
+        rotateY = angle * 35;
       } else {
         baseZ = -Math.abs(Math.cos(angle) - 1) * respDepth;
         depthMult = Math.abs(position) * respDepth * 0.5;

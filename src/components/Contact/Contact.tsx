@@ -187,7 +187,7 @@ export default function Contact() {
     >
       {/* WebGL Kaleidoscope Background */}
       <div className="contact-bg-canvas" aria-hidden="true">
-        <Canvas camera={{ position: [0, 0, 1] }}>
+        <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]}>
           <KaleidoscopeBackground mousePosition={mousePosition} />
         </Canvas>
       </div>
