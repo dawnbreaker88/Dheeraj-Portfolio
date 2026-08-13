@@ -4,14 +4,12 @@ import PhantomInfiniteGallery from './PhantomInfiniteGallery'
 import './PhotoEditing.css'
 
 const GALLERY_ITEMS = [
-  { title: "Wedding", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783849912/DSC09658_v36xj1.jpg", alt: "Neon Portrait" }, year: 2025 },
-  { title: "", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846367/IMG_2537.JPG_mqrwbx.jpg", alt: "Cyberpunk Streets" }, year: 2025 },
-  { title: "Sunset Drift", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846367/IMG_2530.JPG_wpp0vd.jpg", alt: "Sunset Horizon" }, year: 2024 },
-  { title: "Warm Film", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846366/IMG_2522.JPG_q1iiso.jpg", alt: "Warm Retro" }, year: 2024 },
-  { title: "Cold Nordic", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846366/IMG_2520.JPG_apzvwz.jpg", alt: "Iceland Landscape" }, year: 2025 },
-  { title: "Golden Gate", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783846365/WhatsApp_Image_2026-07-12_at_2.12.44_PM_wggtum.jpg", alt: "Golden Gate Grade" }, year: 2024 },
-  { title: "Product Detail", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783849912/DSC09675_n9odpn.jpg", alt: "Headphone Shoot" }, year: 2024 },
-  { title: "Editorial Light", image: { src: "https://res.cloudinary.com/ady5ycld/image/upload/f_auto,q_auto,w_600/v1783849912/DSC09670_xnm6ll.jpg", alt: "Editorial Lights" }, year: 2024 }
+  { title: "Wedding", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548670/DSC09675.jpg", alt: "Wedding Photography" }, year: 2025 },
+{ title: "Portrait", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548647/DSC09639-2.jpg", alt: "Portrait Photography" }, year: 2025 },
+{ title: "Warm Film", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548591/IMG_2522.JPG.jpg", alt: "Warm Film Photography" }, year: 2024 },
+{ title: "Editorial Light", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548588/IMG_1367.JPG.jpg", alt: "Editorial Photography" }, year: 2024 },
+{ title: "Sunset Drift", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548588/IMG_2530.JPG.jpg", alt: "Sunset Photography" }, year: 2024 },
+{ title: "Cyberpunk Streets", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548587/IMG_2537.JPG.jpg", alt: "Street Photography" }, year: 2025 }
 ]
 
 export default function PhotoEditing() {

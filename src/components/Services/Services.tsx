@@ -24,9 +24,9 @@ const SERVICES = [
   },
   {
     id: 's4',
-    num: '04',
-    title: 'Advertisement Editing',
-    desc: 'Performance-driven edits designed to grab attention quickly and communicate products clearly..',
+num: '04',
+title: 'Podcast Editing',
+desc: 'Clean, engaging podcast edits with natural pacing, crisp dialogue, and polished visuals that keep conversations flowing.',
   },
   {
     id: 's5',
