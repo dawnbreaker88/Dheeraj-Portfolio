@@ -3,10 +3,11 @@ import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+import { getCloudinaryUrl } from '../../utils/cloudinary'
 import './About.css'
 
 const PORTRAIT_PLACEHOLDER =
-  "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548800/WhatsApp_Image_2026-07-12_at_3.55.07_PM.jpg"
+  getCloudinaryUrl("https://res.cloudinary.com/jqfy1wun/image/upload/v1786548800/WhatsApp_Image_2026-07-12_at_3.55.07_PM.jpg", { width: 800 })
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null)

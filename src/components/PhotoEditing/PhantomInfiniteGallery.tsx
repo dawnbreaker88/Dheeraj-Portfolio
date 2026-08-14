@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect, useCallback, startTransition } from 'react'
+import React, { useRef, useState, useEffect, useCallback } from 'react'
+import { getCloudinaryUrl } from '../../utils/cloudinary'
 
 export interface GalleryItem {
   title: string
@@ -271,6 +272,19 @@ export default function PhantomInfiniteGallery({
           if (Math.abs(nextMouseY) < 0.1) nextMouseY = 0
         }
 
+        // 5. Skip state update if values haven't changed to avoid unnecessary React re-renders
+        if (
+          Math.abs(nextSize - prev.size) < 0.01 &&
+          Math.abs(nextOffsetX - prev.offsetX) < 0.01 &&
+          Math.abs(nextOffsetY - prev.offsetY) < 0.01 &&
+          Math.abs(nextInertiaX - prev.inertiaX) < 0.01 &&
+          Math.abs(nextInertiaY - prev.inertiaY) < 0.01 &&
+          Math.abs(nextMouseX - prev.mouseX) < 0.01 &&
+          Math.abs(nextMouseY - prev.mouseY) < 0.01
+        ) {
+          return prev
+        }
+
         return {
           offsetX: nextOffsetX,
           offsetY: nextOffsetY,
@@ -284,6 +298,7 @@ export default function PhantomInfiniteGallery({
 
       raf = requestAnimationFrame(tick)
     }
+
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
   }, [inertiaEnabled, throwFriction, parallaxEnabled, parallaxEase])
@@ -525,15 +540,17 @@ export default function PhantomInfiniteGallery({
             padding: `${cellPadding}px`,
             boxSizing: "border-box",
             transformStyle: "preserve-3d",
+            willChange: "transform",
             transform: `translate3d(0, 0, ${z}px) rotateY(${yawDeg}deg) rotateX(${pitchDeg}deg) scale(${scale})`,
             opacity
           }}
         >
-          {/* Optimized image tag with loading="lazy" (replaces heavy background-image divs) */}
+          {/* Optimized image tag with loading="lazy" and decoding="async" */}
           <img
-            src={item?.image?.src}
+            src={item?.image?.src ? getCloudinaryUrl(item.image.src, { width: 450 }) : ''}
             alt={item?.image?.alt || item?.title || "Gallery item"}
             loading="lazy"
+            decoding="async"
             style={{
               flex: 1,
               width: "100%",
@@ -544,6 +561,7 @@ export default function PhantomInfiniteGallery({
             }}
           />
         </div>
+
       )
     }
   }

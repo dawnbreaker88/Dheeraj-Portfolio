@@ -73,7 +73,7 @@ export const ugcProjects: UgcProject[] = [
   duration: '45 Seconds',
   year: '2024',
   videoSrc: "https://res.cloudinary.com/jqfy1wun/video/upload/v1786546739/DEMO_POD-compressed.mp4",
-  poster: "https://res.cloudinary.com/cfqdlsg4/image/upload/v1786718386/WhatsApp_Image_2026-08-13_at_18.32.55_lzdvh5.jpg",
+  poster: "https://res.cloudinary.com/cfqdlsg4/image/upload/f_auto,q_auto,w_600/v1786718386/WhatsApp_Image_2026-08-13_at_18.32.55_lzdvh5.jpg",
   description:
     'A client podcast edit focused on clean cuts, natural pacing, crisp dialogue, and engaging visuals that keep the conversation polished and easy to follow.'
   },

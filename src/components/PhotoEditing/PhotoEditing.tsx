@@ -1,15 +1,16 @@
 import { useRef } from 'react'
 import { gsap, ScrollTrigger, useGSAP } from '../../utils/gsapSetup'
 import PhantomInfiniteGallery from './PhantomInfiniteGallery'
+import { getCloudinaryUrl } from '../../utils/cloudinary'
 import './PhotoEditing.css'
 
 const GALLERY_ITEMS = [
-  { title: "Wedding", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548670/DSC09675.jpg", alt: "Wedding Photography" }, year: 2025 },
-{ title: "Portrait", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548647/DSC09639-2.jpg", alt: "Portrait Photography" }, year: 2025 },
-{ title: "Warm Film", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548591/IMG_2522.JPG.jpg", alt: "Warm Film Photography" }, year: 2024 },
-{ title: "Editorial Light", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548588/IMG_1367.JPG.jpg", alt: "Editorial Photography" }, year: 2024 },
-{ title: "Sunset Drift", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548588/IMG_2530.JPG.jpg", alt: "Sunset Photography" }, year: 2024 },
-{ title: "Cyberpunk Streets", image: { src: "https://res.cloudinary.com/jqfy1wun/image/upload/v1786548587/IMG_2537.JPG.jpg", alt: "Street Photography" }, year: 2025 }
+  { title: "Wedding", image: { src: getCloudinaryUrl("https://res.cloudinary.com/jqfy1wun/image/upload/v1786548670/DSC09675.jpg", { width: 600 }), alt: "Wedding Photography" }, year: 2025 },
+  { title: "Portrait", image: { src: getCloudinaryUrl("https://res.cloudinary.com/jqfy1wun/image/upload/v1786548647/DSC09639-2.jpg", { width: 600 }), alt: "Portrait Photography" }, year: 2025 },
+  { title: "Warm Film", image: { src: getCloudinaryUrl("https://res.cloudinary.com/jqfy1wun/image/upload/v1786548591/IMG_2522.JPG.jpg", { width: 600 }), alt: "Warm Film Photography" }, year: 2024 },
+  { title: "Editorial Light", image: { src: getCloudinaryUrl("https://res.cloudinary.com/jqfy1wun/image/upload/v1786548588/IMG_1367.JPG.jpg", { width: 600 }), alt: "Editorial Photography" }, year: 2024 },
+  { title: "Sunset Drift", image: { src: getCloudinaryUrl("https://res.cloudinary.com/jqfy1wun/image/upload/v1786548588/IMG_2530.JPG.jpg", { width: 600 }), alt: "Sunset Photography" }, year: 2024 },
+  { title: "Cyberpunk Streets", image: { src: getCloudinaryUrl("https://res.cloudinary.com/jqfy1wun/image/upload/v1786548587/IMG_2537.JPG.jpg", { width: 600 }), alt: "Street Photography" }, year: 2025 }
 ]
 
 export default function PhotoEditing() {

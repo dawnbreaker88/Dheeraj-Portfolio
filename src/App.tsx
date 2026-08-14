@@ -77,6 +77,14 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    const handlePreload = () => {
+      setMaxPreloadedIndex(99)
+    }
+    window.addEventListener('preload-all-sections', handlePreload)
+    return () => window.removeEventListener('preload-all-sections', handlePreload)
+  }, [])
+
+  useEffect(() => {
     // Force browser to start scroll at top on page reload
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual'

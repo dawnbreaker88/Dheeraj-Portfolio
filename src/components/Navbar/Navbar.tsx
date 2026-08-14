@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getLenis } from '../../utils/lenis'
+import { scrollToSection } from '../../utils/scroll'
 import './Navbar.css'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -58,15 +58,9 @@ export default function Navbar() {
   }, [])
 
   const scrollTo = (href: string) => {
-    const el = document.querySelector(href)
-    if (!el) return
-    const lenis = getLenis()
-    if (lenis) {
-      lenis.scrollTo(el as HTMLElement, { duration: 1.6, easing: (t) => 1 - Math.pow(1 - t, 3) })
-    } else {
-      el.scrollIntoView({ behavior: 'smooth' })
-    }
     setMenuOpen(false)
+    setIsWorkOpen(false)
+    scrollToSection(href)
   }
 
   const isNavFloating = scrolled && !menuOpen
