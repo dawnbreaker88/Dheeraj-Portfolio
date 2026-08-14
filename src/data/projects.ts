@@ -34,7 +34,7 @@ export const projects: Project[] = [
     duration: '60 Seconds',
     client: 'Anurag University',
     year: '2025',
-    videoSrc: "https://res.cloudinary.com/syipnv4u/video/upload/v1786549151/sports_bout_cc.mp4",
+    videoSrc: "https://res.cloudinary.com/syipnv4u/video/upload/v1786549107/Convocation.mp4",
     thumbnail: '',
     description:
       'A fast-paced graduation recap celebrating the achievements, emotions, and memories of the Anurag University Class of 2025.',

@@ -73,8 +73,21 @@ export const ugcProjects: UgcProject[] = [
   duration: '45 Seconds',
   year: '2024',
   videoSrc: "https://res.cloudinary.com/jqfy1wun/video/upload/v1786546739/DEMO_POD-compressed.mp4",
-  poster: "https://res.cloudinary.com/cfqdlsg4/image/upload/f_auto,q_auto,w_600/v1783859892/b94ab62c-bf36-41df-88a8-e428268acdb1_descoe.jpg",
+  poster: "https://res.cloudinary.com/cfqdlsg4/image/upload/v1786718386/WhatsApp_Image_2026-08-13_at_18.32.55_lzdvh5.jpg",
   description:
     'A client podcast edit focused on clean cuts, natural pacing, crisp dialogue, and engaging visuals that keep the conversation polished and easy to follow.'
-  }
+  },
+ {
+  id: 'u5',
+  index: '05',
+  title: 'Tejas 2026',
+  brand: 'University Project Expo',
+  category: 'Event',
+  duration: '45 Seconds',
+  year: '2026',
+  videoSrc: "https://res.cloudinary.com/syipnv4u/video/upload/v1786625542/TEJAS-02_1_1.mp4",
+  poster: "https://res.cloudinary.com/cfqdlsg4/image/upload/f_auto,q_auto,w_600/v1783859892/b94ab62c-bf36-41df-88a8-e428268acdb1_descoe.jpg",
+  description:
+    'A dynamic event edit created for Tejas 2026, the university project expo, featuring student innovations, project showcases, and an energetic visual presentation designed to capture the spirit of technology and creativity.'
+}
 ];
