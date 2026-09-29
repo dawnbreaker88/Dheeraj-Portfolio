@@ -296,7 +296,7 @@ export default function BirthdaySecretModal({ isOpen, onClose }: BirthdaySecretM
               <header className="secret-top-bar animate-stagger">
                 <div className="secret-status-tag">
                   <span className="status-dot" />
-                  <span className="text-meta">CLASSIFIED BIRTHDAY CELEBRATION // ACTIVE</span>
+                
                 </div>
                 <button
                   className="secret-exit-btn"
