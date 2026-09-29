@@ -93,7 +93,7 @@ export default function SocialWidget({
           <SocialIcon href={whatsapp} label="WhatsApp" icon={IconWhatsApp} color="#25D366" />
           <SocialIcon href={instagram} label="Instagram" icon={IconInstagram} color="#E1306C" />
           <SocialIcon href={linkedin} label="LinkedIn" icon={IconLinkedIn} color="#0077B5" />
-          <SocialIcon href={behance} label="Behance" icon={IconBehance} color="#1769ff" />
+          {/* <SocialIcon href={behance} label="Behance" icon={IconBehance} color="#1769ff" /> */}
           <SocialIcon href={email} label="Email" icon={IconEmail} color="#ea4335" />
         </motion.div>
       )}
