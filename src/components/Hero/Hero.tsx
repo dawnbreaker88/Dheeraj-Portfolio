@@ -81,7 +81,7 @@ export default function Hero() {
           <ColorBends
             rotation={90}
             speed={0.2}
-            colors={["#5227FF", "#7C3AED", "#3B82F6"]}
+            colors={["#E50914", "#FF334B", "#991B1B"]}
             transparent
             autoRotate={1}
             scale={0.6}

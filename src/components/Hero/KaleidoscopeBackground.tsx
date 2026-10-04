@@ -72,14 +72,14 @@ class LiquidFlowMaterial extends THREE.ShaderMaterial {
 
           // Liquid theme color mapping
           vec3 baseBg = vec3(0.03, 0.03, 0.04);             // Deep midnight black/gray
-          vec3 violetGlow = vec3(0.24, 0.14, 0.49);          // Sleek dark violet (#3e247d)
-          vec3 purpleAccent = vec3(0.41, 0.35, 0.98);        // Signature purple (#6a5af9)
-          vec3 tealAccent = vec3(0.02, 0.60, 0.58);          // Deep teal
+          vec3 redGlow = vec3(0.45, 0.06, 0.10);             // Sleek dark crimson
+          vec3 redAccent = vec3(0.98, 0.18, 0.25);           // Signature cinematic red (#ff334b)
+          vec3 warmAccent = vec3(0.75, 0.10, 0.15);          // Deep ruby
 
           // Mix colors based on noise flow fields
-          vec3 color = mix(baseBg, violetGlow, clamp(f * 2.2, 0.0, 1.0));
-          color = mix(color, purpleAccent, clamp(length(q), 0.0, 1.0) * 0.35);
-          color = mix(color, tealAccent, clamp(length(r.x), 0.0, 1.0) * 0.12);
+          vec3 color = mix(baseBg, redGlow, clamp(f * 2.2, 0.0, 1.0));
+          color = mix(color, redAccent, clamp(length(q), 0.0, 1.0) * 0.35);
+          color = mix(color, warmAccent, clamp(length(r.x), 0.0, 1.0) * 0.12);
 
           // Subtle contrast and brightness boost
           color = pow(color, vec3(0.85)) * 1.15;

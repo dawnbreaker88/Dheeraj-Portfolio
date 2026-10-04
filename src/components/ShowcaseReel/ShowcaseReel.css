@@ -1,0 +1,241 @@
+.showcase-reel-section {
+  position: relative;
+  width: 100%;
+  background: var(--color-bg);
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Scroll track that hosts the pinned animation */
+.showcase-reel-track {
+  position: relative;
+  width: 100%;
+  height: 350vh;
+}
+
+@media (max-width: 768px) {
+  .showcase-reel-track {
+    height: 240vh;
+  }
+}
+
+/* Pinned sticky container */
+.showcase-reel-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Header overlay that fades as the reel goes fullscreen */
+.showcase-reel-header {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 20;
+  pointer-events: none;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  transition: opacity 0.3s ease;
+}
+
+.showcase-reel-tag {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  background: rgba(255, 51, 75, 0.1);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 51, 75, 0.25);
+}
+
+.showcase-reel-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* The frame that scales and morphs from framed -> fullscreen -> docked frame */
+.showcase-reel-frame {
+  position: relative;
+  width: 82vw;
+  height: 72vh;
+  max-width: 1500px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+  will-change: transform, border-radius, width, height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ambient glow behind frame */
+.showcase-reel-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle at center, rgba(255, 51, 75, 0.18) 0%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(30px);
+}
+
+/* The actual video element */
+.showcase-reel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Subtle cinematic letterbox / vignette overlay inside the video */
+.showcase-reel-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Cinematic film grain on video */
+.showcase-reel-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 3;
+}
+
+/* On-screen controls & badges */
+.showcase-reel-controls {
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.showcase-reel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+}
+
+.showcase-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff334b;
+  box-shadow: 0 0 10px #ff334b;
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.5;
+  }
+}
+
+.showcase-reel-audio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.showcase-reel-audio-btn:hover {
+  background: rgba(255, 51, 75, 0.3);
+  border-color: rgba(255, 51, 75, 0.6);
+  transform: translateY(-1px);
+}
+
+.showcase-audio-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Fullscreen indicator watermark */
+.showcase-reel-watermark {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .showcase-reel-frame {
+    width: 92vw;
+    height: 60vh;
+    border-radius: 12px;
+  }
+
+  .showcase-reel-controls {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .showcase-reel-badge,
+  .showcase-reel-audio-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .showcase-reel-watermark {
+    top: 16px;
+    right: 16px;
+  }
+}

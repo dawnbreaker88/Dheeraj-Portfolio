@@ -4,15 +4,16 @@ import './Navbar.css'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const WORK_SUB_LINKS = [
+  { label: 'Short-Form', href: '#short-form', desc: 'Authentic & high-conversion vertical content' },
   { label: 'Cinematics', href: '#cinematics', desc: 'Cinematic brand films, documentaries & storytelling' },
-  { label: 'UGC Ads', href: '#ugc', desc: 'Authentic & high-conversion vertical content' },
   { label: 'Photo Work', href: '#photo-editing', desc: 'Aesthetic raw grading & editorial retouching' },
 ]
 
 const OTHER_LINKS = [
+  { label: 'Reel', href: '#showcase-reel' },
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Services', href: '#services' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
 ]
 

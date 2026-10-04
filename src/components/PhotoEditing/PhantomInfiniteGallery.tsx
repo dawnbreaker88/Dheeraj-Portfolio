@@ -131,7 +131,7 @@ export default function PhantomInfiniteGallery({
   throwMinSpeed = 80,
   throwMaxSpeed = 2500,
   zoomValue = 0.7,
-  hoverColor = "#6a5af9"
+  hoverColor = "#ff334b"
 }: PhantomInfiniteGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 

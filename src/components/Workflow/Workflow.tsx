@@ -229,7 +229,7 @@ export default function Workflow() {
             </g>
 
             {/* Center node */}
-            <circle cx={CENTER} cy={CENTER} r="38" fill="#0d0d1a" stroke="rgba(106, 90, 249, 0.3)" strokeWidth="1" />
+            <circle cx={CENTER} cy={CENTER} r="38" fill="#140a0c" stroke="rgba(255, 51, 75, 0.35)" strokeWidth="1" />
             <text
               x={CENTER} y={CENTER - 4}
               textAnchor="middle"

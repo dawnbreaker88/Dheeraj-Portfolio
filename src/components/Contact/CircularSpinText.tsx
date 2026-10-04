@@ -40,7 +40,7 @@ export default function CircularSpinText({
   size = 120,
   fontSize = 9,
   fontWeight = 800,
-  textColor = "var(--color-accent)",
+  textColor = "#ffffff",
   radius = 42,
   letterSpacing = 1,
   direction = "clockwise",

@@ -152,7 +152,7 @@ export default function Contact() {
         const alpha = dist < 220 ? 0.5 : 0.15
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(106, 90, 249, ${alpha})`
+        ctx.fillStyle = `rgba(255, 51, 75, ${alpha})`
         ctx.fill()
       })
       animId = requestAnimationFrame(draw)
@@ -217,7 +217,7 @@ export default function Contact() {
               size={110}
               radius={40}
               fontSize={8.5}
-              textColor="var(--color-accent)"
+              textColor="#ffffff"
             />
           </motion.div>
         )}

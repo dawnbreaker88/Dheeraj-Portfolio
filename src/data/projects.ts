@@ -52,30 +52,6 @@ export const projects: Project[] = [
     description:
       'A dynamic aftermovie bringing together the best moments of Luminor through engaging pacing, clean transitions, and vibrant visuals.',
   },
-  {
-    id: 'p4',
-    index: '04',
-    title: 'Sportabout',
-    category: 'Sports Highlight',
-    duration: '45 Seconds',
-    client: 'Anurag University',
-    year: '2024',
-    videoSrc: "https://res.cloudinary.com/syipnv4u/video/upload/v1786549385/sports_bout.mp4",
-    thumbnail: '',
-    description:
-      'An energetic sports highlight capturing the intensity, teamwork, and competitive spirit of Anurag University’s annual Sportabout event.',
-  },
-  {
-    id: 'p5',
-    index: '05',
-    title: 'Bathukamma',
-    category: 'Cultural Highlight',
-    duration: '8 Minutes',
-    client: 'Anurag University',
-    year: '2024',
-    videoSrc: "https://res.cloudinary.com/syipnv4u/video/upload/v1786549146/FESTIVAL.mp4",
-    thumbnail: '',
-    description:
-      'A vibrant cultural highlight showcasing the traditions, celebrations, and community spirit of Bathukamma at Anurag University.',
-  },
+
+
 ];

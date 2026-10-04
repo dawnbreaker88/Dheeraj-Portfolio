@@ -88,7 +88,7 @@ export default function Philosophy() {
         if (rp.alpha <= 0) { ripples.splice(i, 1); continue }
         ctx.beginPath()
         ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(106, 90, 249, ${rp.alpha})`
+        ctx.strokeStyle = `rgba(255, 51, 75, ${rp.alpha})`
         ctx.lineWidth = 1.5
         ctx.stroke()
       }

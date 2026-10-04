@@ -3,36 +3,50 @@ import { gsap } from '../../utils/gsapSetup'
 import { useGSAP } from '@gsap/react'
 import './Tools.css'
 
-const TOOLS = [
+interface ToolItem {
+  id: string
+  name: string
+  uses: string
+ 
+  logo: string
+}
+
+const TOOLS: ToolItem[] = [
   {
-    id: 'premiere', name: 'Premiere Pro',
-    uses: 'Timeline Editing • Multicam • Audio Sync • Exporting',
-    tag: 'PR',
+    id: 'premiere',
+    name: 'Premiere Pro',
+    uses: 'Timeline Editing • Multicam • Audio Sync • Master 4K Delivery',
+    logo: '/logos/adobe-premiere-pro-icon.svg',
   },
   {
-    id: 'davinci', name: 'DaVinci Resolve',
-    uses: 'Color Grading • Fusion VFX • Audio Mixing • Delivery',
-    tag: 'DR',
+    id: 'davinci',
+    name: 'DaVinci Resolve',
+    uses: 'Color Grading • Node Architecture • Fusion VFX • Fairlight Audio',
+    logo: '/logos/DaVinci_Resolve_17_logo.svg',
   },
   {
-    id: 'photoshop', name: 'Photoshop',
-    uses: 'Retouching • Thumbnails • Masking • Compositing',
-    tag: 'PS',
+    id: 'capcut',
+    name: 'CapCut',
+    uses: 'Quick Turnaround • Vertical Formats • Motion Effects • UGC',
+    logo: '/logos/capcut-icon.svg',
   },
   {
-    id: 'lightroom', name: 'Lightroom',
-    uses: 'Color Correction • Raw Processing • Presets • Retouching',
-    tag: 'LR',
+    id: 'canva',
+    name: 'Canva',
+    uses: 'Social Layouts • Visual Mockups • Graphic Assets • Typography',
+    logo: '/logos/canva-icon.svg',
   },
   {
-    id: 'capcut', name: 'CapCut',
-    uses: 'Quick Edits • Mobile Formats • Transitions • UGC',
-    tag: 'CC',
+    id: 'photoshop',
+    name: 'Photoshop',
+    uses: 'Editorial Retouching • Custom Thumbnails • Masking • Compositing',
+    logo: '/logos/photoshop-icon.svg',
   },
   {
-    id: 'canva', name: 'Canva',
-    uses: 'Social Layouts • Mockups • Graphics • Templates',
-    tag: 'CA',
+    id: 'lightroom',
+    name: 'Lightroom',
+    uses: 'Color Correction • RAW Processing • Custom Presets & LUTs',
+    logo: '/logos/lightroom-icon.svg',
   },
 ]
 
@@ -47,11 +61,12 @@ export default function Tools() {
     const track = trackRef.current!
 
     // Autoplay marquee loop
-    const tween = gsap.fromTo(track,
+    const tween = gsap.fromTo(
+      track,
       { x: '0%' },
       {
         x: '-33.333%',
-        duration: 20, // scroll speed
+        duration: 22,
         ease: 'none',
         repeat: -1,
       }
@@ -84,9 +99,8 @@ export default function Tools() {
           <span className="text-meta">Toolkit</span>
           <h2 className="text-section-title">Creative Toolkit</h2>
           <p className="text-body-lg tools-sub">
-            The tools I rely on to transform ideas into polished videos and visuals.
+            The software suite I rely on to transform raw footage into polished, high-retention stories.
           </p>
-
         </div>
       </div>
 
@@ -99,7 +113,15 @@ export default function Tools() {
               data-cursor="link"
             >
               <div className="tool-card-header">
-                <span className="tool-card-tag">{tool.tag}</span>
+                <div className="tool-logo-container">
+                  <img
+                    src={tool.logo}
+                    alt={`${tool.name} logo`}
+                    className="tool-card-logo"
+                    loading="lazy"
+                  />
+                </div>
+                <span className="tool-card-badge">{tool.badge}</span>
               </div>
 
               <div className="tool-card-meta">

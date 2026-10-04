@@ -7,6 +7,7 @@ import './styles/globals.css'
 import Navbar from './components/Navbar/Navbar'
 import Cursor from './components/Cursor/Cursor'
 import Hero from './components/Hero/Hero'
+import ShowcaseReel from './components/ShowcaseReel/ShowcaseReel'
 import About from './components/About/About'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 
@@ -156,27 +157,28 @@ export default function App() {
       {/* Main content */}
       <main id="main-content">
         <Hero />
+        <ShowcaseReel />
         <About />
 
         <Suspense fallback={null}>
           <LazySection height="100vh" index={0} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
-            <Portfolio />
-          </LazySection>
-
-          <LazySection height="100vh" index={1} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Ugc />
           </LazySection>
 
-          <LazySection height="30vh" index={2} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
-            <Philosophy />
+          <LazySection height="100vh" index={1} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
+            <Portfolio />
           </LazySection>
 
-          <LazySection height="100vh" index={3} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
+          <LazySection height="100vh" index={2} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <PhotoEditing />
           </LazySection>
 
-          <LazySection height="60vh" index={4} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
+          <LazySection height="80vh" index={3} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
             <Services />
+          </LazySection>
+
+          <LazySection height="30vh" index={4} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>
+            <Philosophy />
           </LazySection>
 
           <LazySection height="40vh" index={5} maxPreloadedIndex={maxPreloadedIndex} onVisible={onVisible}>

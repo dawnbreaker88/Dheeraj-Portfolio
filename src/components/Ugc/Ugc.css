@@ -1,15 +1,17 @@
-/* ─── UGC Section ─────────────────────────────────── */
+/* ─── Short-Form / UGC Section ─────────────────────────────────── */
 
 .ugc-section {
   position: relative;
   background: var(--color-bg);
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-top: 1px solid var(--color-border);
+  padding: clamp(60px, 8vh, 100px) 0;
 }
 
 .ugc-container {
@@ -17,51 +19,133 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(32px, 5vw, 100px);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  z-index: 3;
+}
+
+/* ── Top Bar: Header & Category Pills ── */
+.ugc-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 24px;
+}
+
+.ugc-header-block {
+  max-width: 580px;
+}
+
+.ugc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ugc-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin-bottom: 10px;
+}
+
+.ugc-section-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* Category Filter Tabs */
+.ugc-categories-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+  max-width: 100%;
+  scrollbar-width: none;
+}
+
+.ugc-categories-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.ugc-category-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.ugc-category-btn:hover {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ugc-category-btn.active {
+  color: #fff;
+  background: rgba(255, 51, 75, 0.25);
+  box-shadow: 0 0 15px rgba(255, 51, 75, 0.35),
+              0 0 0 1px rgba(255, 51, 75, 0.5);
+}
+
+/* ── Content Grid: Left Meta & Right Carousel ── */
+.ugc-content-grid {
   display: grid;
-  grid-template-columns: 460px 1fr;
+  grid-template-columns: 440px 1fr;
   gap: 60px;
   align-items: center;
-  z-index: 3;
+  width: 100%;
 }
 
 /* Left Column */
 .ugc-meta-col {
   display: flex;
   flex-direction: column;
-  gap: 48px;
-}
-
-.ugc-eyebrow {
-  display: block;
-  margin-bottom: 16px;
-  color: var(--color-accent);
-}
-
-.ugc-section-title {
-  margin-bottom: 24px;
-}
-
-.ugc-section-desc {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
+  gap: 24px;
 }
 
 .ugc-project-details {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
-  padding: 32px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .ugc-details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 18px;
 }
 
 .ugc-detail-item {
@@ -72,6 +156,8 @@
 
 .ugc-detail-label {
   font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--color-text-secondary);
 }
 
@@ -86,7 +172,7 @@
   line-height: 1.6;
   color: var(--color-text-secondary);
   border-top: 1px solid var(--color-border);
-  padding-top: 20px;
+  padding-top: 18px;
 }
 
 /* Right Column (Carousel) */
@@ -101,24 +187,24 @@
 .ugc-carousel-wrapper {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 580px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Make sure the carousel buttons aren't hidden by clipping */
+/* Carousel control buttons styling */
 .ugc-carousel-wrapper button {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   transition: background 0.3s, transform 0.2s, border-color 0.2s;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .ugc-carousel-wrapper button:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
   transform: translateY(-50%) scale(1.05) !important;
 }
 
@@ -128,41 +214,28 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .ugc-section {
-    height: auto !important;
-    padding: clamp(60px, 8vh, 100px) 0;
-  }
-
-  .ugc-container {
+  .ugc-content-grid {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 0 24px;
-  }
-
-  .ugc-meta-col {
-    gap: 32px;
   }
 
   .ugc-carousel-wrapper {
-    height: 550px;
+    height: 540px;
   }
 }
 
-@media (max-width: 600px) {
-  .ugc-section {
-    padding: 60px 0;
+@media (max-width: 768px) {
+  .ugc-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .ugc-project-details {
-    padding: 20px;
-  }
-
-  .ugc-details-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .ugc-categories-nav {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .ugc-carousel-wrapper {
-    height: 500px;
+    height: 480px;
   }
 }

@@ -140,8 +140,8 @@
   --color-surface: #141416;
   --color-text-primary: #f5f5f7;
   --color-text-secondary: #8e8e93;
-  --color-accent: #6a5af9;
-  --color-accent-hover: #8b7cff;
+  --color-accent: #ff334b;
+  --color-accent-hover: #ff5266;
   --color-border: rgba(255, 255, 255, 0.08);
 
   --font-display: "Cabinet Grotesk", sans-serif;
@@ -283,7 +283,7 @@ input, textarea, select {
   z-index: 1;
   background: radial-gradient(
     circle at center,
-    rgba(106, 90, 249, 0.05) 0%,
+    rgba(255, 51, 75, 0.06) 0%,
     transparent 70%
   );
   transition: opacity 0.3s ease;
