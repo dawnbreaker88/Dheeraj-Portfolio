@@ -121,7 +121,6 @@ export default function Tools() {
                     loading="lazy"
                   />
                 </div>
-                <span className="tool-card-badge">{tool.badge}</span>
               </div>
 
               <div className="tool-card-meta">
